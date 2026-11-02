@@ -1,0 +1,29 @@
+apiVersion: stackshift.com/v1
+kind: Application
+metadata:
+  name: scheduled-report
+spec:
+  services:
+    agent:
+      type: agent
+      startCommand: python agent.py
+      port: 8080
+      agent:
+        name: Scheduled report
+        level: ask_every_time
+        wakeOn: [schedule]
+        schedule: ["0 7 * * 1-5"]
+        timeZone: UTC
+        sleepAfter: 5m
+        models:
+          - provider: anthropic
+            model: claude-sonnet-5-5
+        payWith: credits
+        budget:
+          aiCreditsPerMonth: 20000
+          aiCreditsPerRun: 2000
+          computePerDay: { NGN: "500000" }
+        inbox:
+          sendMode: any
+        platform:
+          - mail.agent_inbox.send
