@@ -1,3 +1,3 @@
-stackshift-agent>=0.1.0
+stackshift-agent>=0.1.1
 anthropic>=0.30
 httpx>=0.24

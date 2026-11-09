@@ -38,5 +38,5 @@ What it fetches is untrusted. The model never follows orders written in the data
 From the dashboard, open Agents and choose New agent. Or from your terminal:
 
 ```bash
-stackshift agents create --name "Scheduled report" --template scheduled-report --language python
+stackshift agents create --name "Scheduled report" --template scheduled-report --language python --platform mail.agent_inbox.send
 ```
